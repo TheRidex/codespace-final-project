@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <link href="Styling.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+        <div class="container">
+                <div class="parent">
+                        <input class="child output" id="result" value="123" disabled>
+                        <button data-cy="AC"class="child dark-gray" onclick="clearScreen()">AC</button>
+                        <button class="child dark-gray" onclick="display('')"></button>
+                        <button data-cy="percentage"class="child dark-gray" onclick="calculatepecent()">%</button>
+                        <button data-cy="divide"class="child orange" onclick="display('/')">/</button>
+                        <button data-cy="7"class="child light-gray" onclick="display('7')">7</button>
+                        <button data-cy="8"class="child light-gray" onclick="display('8')">8</button>
+                        <button data-cy="9"class="child light-gray" onclick="display('9')">9</button>
+                        <button data-cy="multiply"class="child orange" onclick="display('*')">*</button>
+                        <button data-cy="4"class="child light-gray" onclick="display('4')">4</button>
+                        <button data-cy="5"class="child light-gray" onclick="display('5')">5</button>
+                        <button data-cy="6"class="child light-gray" onclick="display('6')">6</button>
+                        <button data-cy="minus"class="child orange" onclick="display('-')">-</button>
+                        <button data-cy="1"class="child light-gray" onclick="display('1')">1</button>
+                        <button data-cy="2"class="child light-gray" onclick="display('2')">2</button>
+                        <button data-cy="3"class="child light-gray" onclick="display('3')">3</button>
+                        <button data-cy="plus"class="child orange" onclick="display('+')">+</button>
+                        <button data-cy="0"class="child zero light-gray" onclick="display('0')">0</button>
+                        <button data-cy="."class="child light-gray" onclick="display('.')">.</button>
+                        <button data-cy="equals"class="child orange" onclick="calculate()">=</button>
+                </div>
+        </div>
+
+        <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

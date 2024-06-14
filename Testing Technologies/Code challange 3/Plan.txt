@@ -1,0 +1,61 @@
+A quick note about how I think we should divide the work.
+
+Whilst Jorge's notes have "subtraction feature" and "multiplication feature" I think we ought to divide the work into Model-View-Controller.
+
+=== Model ===
+So the Model will be the calculation engine, i.e. the heart of the application.  Those lines of code which actually do the arithmetic but no updates to the screen.
+
+=== View ===
+So the View is the HTML and the CSS, essentially everything visible but no code for button clicks.  No code for arithmetic.
+
+=== Controller ===
+The Controller portion is the code that handles button clicks, sends the button's meaning (digit or operand etc.) to the Model.  
+The Model interprets this and returns a changed state.  The Controller then alters the View's state in response to any change of Model state.
+
+So to summarize the Model is the heart, the View is the visible component and the Controller wires up those other two together to form the app.
+If we divide up like this then we can work separately.
+
+
+=== Working on the View ===
+The View Developer will not need to collaborate very much with the others but will need to pass at least something along to the Controller Developer 
+and label the HTML with ids so that the Controller Developer can wire an javascript event handler onto an HTML elements click event.
+
+=== Working on the Controller ===
+The Controller Developer will accept an early version of the HTML from the View Developer with enough ids to wire up event handlers.  
+The Controller Developer will need to build a fake/mock/dummy equivalent of the Model function as something to call and something to change the View with.
+
+
+=== Working on the Model ===
+The Model Developer will need to agree what the Model function will look like (input, output and return parameters) so that the
+Controller Developer can make a mock/fake/dummy equivalent.
+The Model Developer can write unit tests in Javascript without any requirement for Cypress.io.
+
+
+=== The Model Function: Early Draft ===
+So I think an example would be good here, some pseudocode.
+If the user presses "2" then the Controller should call this
+modelHandleDigit(2)
+and the return object should be something like this
+{ currentOperand: 2, priorOperations = []}
+then the user presses "+" the Controller should call this
+modelHandleOperand(+)
+which shoulod return something like this
+{ currentOperand: 2, currentOperation="+", priorOperations = []}
+then if the user presses "3" then the Controller should call this 
+modelHandleDigit(3)
+which should return something like this 
+{ currentOperand: 3, priorOperations = [2,'+']}
+then if the user presses "=" then Controller should call this
+modelHandleEquals()
+which should return something like this
+{ currentResult: 5,  priorOperations = [2,'+',3]}
+
+The Controller should decide what the View should display and not the Model but the Model needs to pass along enough information 
+from which the Controller can choose from.
+
+The model needs to keep an array of the previous operands in my opinion.  My first first thoughts are that the View 
+always displays either  the current operand or the current result (perhaps we can abolish the "current result").
+
+
+
+

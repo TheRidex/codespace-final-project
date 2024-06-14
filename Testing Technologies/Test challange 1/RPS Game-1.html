@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS Game</title>
+    <style>
+        .options{
+            display:flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!--Buttons-->
+    <div class="options">
+        <button data-cy="rock" id="rock">Rock</button>
+        <button data-cy="paper" id="paper">Paper</button>
+        <button data-cy="Scissors" id="scissors">Sissors</button>
+    </div>
+    <h2>Your Option:<span data-cy="user-option" id="user-option"></span></h2>
+    <h2>Computer option:<span data-cy="computer-option" id="computer-option"></span></h2>
+    <h2>Result:<span data-cy="result" id="result"></span></h2>
+
+    <script>
+        // get the buttons
+        const rockBtn = document.getElementById("rock");
+        const paperBtn = document.getElementById("paper");
+        const sissorsBtn = document.getElementById("scissors");
+
+        // Get the spans
+        const userOptionSpan = document.getElementById("user-option");
+        const computerOptionSpan = document.getElementById("computer-option");
+        const resultSpan = document.getElementById("result");
+        //Define the options
+        const options = ["Rock","Paper","Scissors"];
+        //Add click to the buttons
+        //Rock button
+        rockBtn.addEventListener("click", function(){
+            // call the play function
+            //and pass on the value of the button
+            //playGame(options[0]);
+            console.log(options[0]);
+            playGame(options[0]);
+        });
+        //Paper Button
+        paperBtn.addEventListener("click", function(){
+            // call the play function
+            //and pass on the value of the button
+            //playGame(option[1]);
+            console.log(options[1]);
+            playGame(options[1]);
+        });
+        //Sissors Button
+        sissorsBtn.addEventListener("click", function(){
+            // call the play function
+            //and pass on the value of the button
+            //playGame(option[2]);
+            console.log(options[2]);
+            playGame(options[2]);
+        });
+        //Play the game function 
+        function playGame(userOption){
+            console.log(userOption);
+
+            //set the user option
+            userOptionSpan.innerHTML = userOption;
+
+            //get the computer option
+            const computerOption = options[Math.floor(Math.random() * options.length)];
+            //just for debug
+            console.log(computerOption);
+            //set the computer option
+            computerOptionSpan.innerHTML = computerOption;
+
+            //compare the options
+            // a draw
+        
+            if (userOption === computerOption){
+            resultSpan.innerHTML = "It is a tie!"
+            }
+            // User win 
+            //Rock vs scissors
+            else if (userOption === "Rock" && computerOption === "Scissors"){
+                resultSpan.innerHTML = "You win!"
+            }
+            //Paper vs Rock
+            else if (userOption === "Paper" && computerOption === "Rock"){
+                resultSpan.innerHTML = "You win!"
+            }
+            // Scissors vs Paper
+            else if (userOption === "Scissors" && computerOption === "Paper"){
+                resultSpan.innerHTML = "You win!"
+            }
+            //Otherwise
+            //We lose...
+            else{
+                resultSpan.innerHTML = "You Lose!"
+            }
+        }
+        
+    </script>
+</body>
+</html>
